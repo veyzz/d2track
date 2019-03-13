@@ -20,11 +20,12 @@ def profile_exist(player_id):
 def get_heroes(player_id):
     url = f"https://api.opendota.com/api/players/{player_id}/heroes"
     response = requests.get(url)
-    data = response.json()[:5]
+    data = response.json()[:3]
     info = {}
     for obj in data:
-        hero = HERO[str(obj['hero_id'])]
-        info[hero] = f"{round(100*obj['win']/obj['games'], 2)}%"
+        if obj['games']:
+            hero = HERO[str(obj['hero_id'])]
+            info[hero] = f"{round(100*obj['win']/obj['games'], 2)}%"
     return info
 
 
@@ -85,7 +86,29 @@ def get_players():
     path = f'/home/{os.getlogin()}/.steam/steam/steamapps/common/dota 2 beta/game/dota/server_log.txt'
     with open(path, 'r') as file:
         string = file.read()
-    return list(map(int, re.findall('U:1:(\d+)', re.findall('DOTA_GAMEMODE_ALL_DRAFT (.*)', string)[-1])))
+    return list(map(int, re.findall('U:1:(\d+)', \
+        re.findall('DOTA_GAMEMODE_ALL_DRAFT (.*)', string)[-1])))
+
+
+def to_console(data):
+    k = 0
+    for id in data.keys():
+        k += 1
+        obj = data[id]
+        if obj:
+            print(f"[{k}]:\n{obj['link']}")
+            print(f"g: {obj['stats']['games']} | wr: {obj['stats']['winrate']}")
+            print('[Heroes]'.center(40))
+            for hero in obj['heroes'].keys():
+                txt = f"{hero}"
+                txt = txt.center(20)
+                print(f"{txt} | {obj['heroes'][hero]}")
+            print('[Spamming]'.center(40))
+            for hero in obj['matches'].keys():
+                txt = f"{hero}"
+                txt = txt.center(20)
+                print(f"{txt} | {obj['matches'][hero]['winrate']}")
+            print('-----')
 
 
 def main():
@@ -93,7 +116,7 @@ def main():
     players = get_players()
     for player_id in players:
         data[player_id] = get_info(player_id)
-    print(data)
+    to_console(data)
 
 
 if __name__ == "__main__":
