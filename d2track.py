@@ -5,25 +5,6 @@ import os
 import time
 
 
-class window:
-    def __init__(self):
-        self.windowWidth = 1000
-        self.windowHeight = 565
-        self.streamUrl = "d2track.html"
-        app = QApplication(sys.argv)
-        self.window = QWidget()
-        self.stream = QWebEngineView()
-        self.window.setWindowTitle("Стрим dota2ruhub")
-        self.window.setFixedSize(self.windowWidth, self.windowHeight)
-        self.window.move(Functions.getMiddleScreenX(self.windowWidth), Functions.getMiddleScreenY(self.windowHeight))
-        self.stream.setHtml("""<a href=""" + self.streamUrl + """>Войти на стрим</a>""")
-        self.wnd= QGridLayout()
-        self.wnd.addWidget(self.stream)
-        self.window.setLayout(self.wnd)
-        self.window.show()
-        sys.exit(app.exec_())
-
-
 with open('heroes.json', 'r') as file:
     HERO = json.load(file)
 
@@ -255,7 +236,6 @@ def to_html(data):
     html_page += '''
     </div>
   </div>
-
  </body>
 </html>'''
     with open('d2track.html', 'w') as file:
