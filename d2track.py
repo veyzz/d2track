@@ -248,7 +248,7 @@ def main():
     for player_id in players:
         data[player_id] = get_info(player_id)
     to_html(data)
-    to_console(data)
+    #to_console(data)
     os.system('google-chrome --new-window -app d2track.html')
 
 
