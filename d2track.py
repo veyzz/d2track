@@ -25,7 +25,11 @@ def get_heroes(player_id):
     for obj in data:
         if obj['games']:
             hero = HERO[str(obj['hero_id'])]
-            info[hero] = f"{round(100*obj['win']/obj['games'], 2)}%"
+            info[hero] = \
+            {
+                'games': obj['games'],
+                'winrate': f"{round(100*obj['win']/obj['games'], 2)}%"
+            }
     return info
 
 
@@ -102,7 +106,7 @@ def to_console(data):
             for hero in obj['heroes'].keys():
                 txt = f"{hero}"
                 txt = txt.center(20)
-                print(f"{txt} | {obj['heroes'][hero]}")
+                print(f"{txt} | {obj['heroes'][hero]['winrate']}")
             print('[Spamming]'.center(40))
             for hero in obj['matches'].keys():
                 txt = f"{hero}"
@@ -111,11 +115,141 @@ def to_console(data):
             print('-----')
 
 
+def to_html(data):
+    html_page = '''
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>D2Track</title>
+  <style>
+    #window {
+        width: 1000px;
+        position: absolute;
+        height: 565px;
+        overflow: hidden;
+    }
+    #half {
+        float: left;
+        width: 500px;
+        position: relative;
+        height: 565px;
+        overflow: hidden;
+    }
+    #profile {
+        color: white;
+        text-shadow: black 0 0 4px;
+        width: 494px;
+        position: relative;
+        height: 17vh;
+        border: 1px solid #000;
+        margin: 2px;
+        overflow: hidden;
+    }
+    #link {
+        float: left;
+        font-size: 12pt;
+        text-align:  center;
+        width: 120px;
+        position: relative;
+        height: 100%;
+        border: 1px solid #000;
+        overflow: hidden;
+    }
+    #hero {
+        float: left;
+        font-size: 11pt;
+        text-align:  center;
+        width: 70px;
+        position: relative;
+        height: 100%;
+        border: 1px solid #000;
+        overflow: hidden;
+    }
+    #last {
+        float: left;
+        font-size: 13pt;
+        text-align:  center;
+        width: 154px;
+        position: relative;
+        height: 100%;
+        border: 1px solid #000;
+        overflow: hidden;
+    }
+ </style>
+ </head>
+ <body background="bg.jpg" link="red" vlink="#cecece" alink="#ff0000">
+  <div id="window">
+    <div id="half">'''
+    k = 0
+    for id in data.keys():
+        k += 1
+        if k == 6:
+            html_page += '''
+    </div>
+    <div id="half">'''
+        obj = data[id]
+        if not obj:
+            html_page += '''
+     <div id="profile">
+      Неизвестно...
+     </div>'''
+        else:
+            html_page += f'''
+      <div id="profile">
+        <div id="link">
+          <br>
+          <a href="{obj['link']}">
+            Профиль
+          </a>
+          <br>
+          Игр: {obj['stats']['games']}
+          <br>
+          Винрейт: {obj['stats']['winrate']}
+        </div>'''
+            h = 0
+            hero_block = ''
+            for hero in obj['heroes'].keys():
+                h += 1
+                heroname = hero.lower().replace(' ', '_')
+                heroname = heroname.replace(' ', '_')
+                html_page += f'''
+        <div id="hero">
+          <img src="https://api.opendota.com/apps/dota2/images/heroes/{heroname}_sb.png">
+          Игр: {obj['heroes'][hero]['games']}
+          <br>
+          Винрейт: {obj['heroes'][hero]['winrate']}
+        </div>'''
+            html_page += (3-h) * '''
+        <div id="hero">
+        </div>'''
+            html_page += '''
+        <div id="last">
+          Спамит:
+          <br>'''
+            for hero in obj['matches'].keys():
+                heroname = hero.lower().replace(' ', '_')
+                heroname = heroname.replace(' ', '_')
+                html_page += f'<img src="https://api.opendota.com/apps/dota2/images/heroes/{heroname}_sb.png">'
+            html_page += '''
+        </div>
+      </div>'''
+    html_page += '''
+    </div>
+  </div>
+
+ </body>
+</html>'''
+    with open('d2track.html', 'w') as file:
+        file.write(html_page)
+
+
 def main():
     data = {}
     players = get_players()
     for player_id in players:
         data[player_id] = get_info(player_id)
+    to_html(data)
     to_console(data)
 
 
