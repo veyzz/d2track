@@ -90,7 +90,7 @@ def get_players():
     with open(path, 'r') as file:
         string = file.read()
     return list(map(int, re.findall('U:1:(\d+)', \
-        re.findall('DOTA_GAMEMODE_ALL_DRAFT (.*)', string)[-1])))
+        re.findall('DOTA_GAMEMODE_CM|DOTA_GAMEMODE_ALL_DRAFT (.*)', string)[-1])))[:10:]
 
 
 def to_console(data):
