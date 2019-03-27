@@ -212,6 +212,7 @@ def to_html(data):
                 h += 1
                 heroname = hero.lower().replace(' ', '_')
                 heroname = heroname.replace('-', '_')
+                heroname = heroname.replace("'", '')
                 html_page += f'''
         <div id="hero">
           <img src="https://dota2.ru/img/heroes/{heroname}/m_icon.jpg" width=59 height=33>
@@ -229,6 +230,7 @@ def to_html(data):
             for hero in obj['matches'].keys():
                 heroname = hero.lower().replace(' ', '_')
                 heroname = heroname.replace('-', '_')
+                heroname = heroname.replace("'", '')
                 html_page += f'<img src="https://dota2.ru/img/heroes/{heroname}/m_icon.jpg" width=59 height=33>'
             html_page += '''
         </div>
