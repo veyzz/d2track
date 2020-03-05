@@ -1,119 +1,478 @@
 {
-  "1": "Anti-Mage",
-  "2": "Axe",
-  "3": "Bane",
-  "4": "Bloodseeker",
-  "5": "Crystal Maiden",
-  "6": "Drow Ranger",
-  "7": "Earthshaker",
-  "8": "Juggernaut",
-  "9": "Mirana",
-  "10": "Morphling",
-  "11": "Shadow Fiend",
-  "12": "Phantom Lancer",
-  "13": "Puck",
-  "14": "Pudge",
-  "15": "Razor",
-  "16": "Sand King",
-  "17": "Storm Spirit",
-  "18": "Sven",
-  "19": "Tiny",
-  "20": "Vengeful Spirit",
-  "21": "Windranger",
-  "22": "Zeus",
-  "23": "Kunkka",
-  "25": "Lina",
-  "26": "Lion",
-  "27": "Shadow Shaman",
-  "28": "Slardar",
-  "29": "Tidehunter",
-  "30": "Witch Doctor",
-  "31": "Lich",
-  "32": "Riki",
-  "33": "Enigma",
-  "34": "Tinker",
-  "35": "Sniper",
-  "36": "Necrophos",
-  "37": "Warlock",
-  "38": "Beastmaster",
-  "39": "Queen of Pain",
-  "40": "Venomancer",
-  "41": "Faceless Void",
-  "42": "Wraith King",
-  "43": "Death Prophet",
-  "44": "Phantom Assassin",
-  "45": "Pugna",
-  "46": "Templar Assassin",
-  "47": "Viper",
-  "48": "Luna",
-  "49": "Dragon Knight",
-  "50": "Dazzle",
-  "51": "Clockwerk",
-  "52": "Leshrac",
-  "53": "Nature's Prophet",
-  "54": "Lifestealer",
-  "55": "Dark Seer",
-  "56": "Clinkz",
-  "57": "Omniknight",
-  "58": "Enchantress",
-  "59": "Huskar",
-  "60": "Night Stalker",
-  "61": "Broodmother",
-  "62": "Bounty Hunter",
-  "63": "Weaver",
-  "64": "Jakiro",
-  "65": "Batrider",
-  "66": "Chen",
-  "67": "Spectre",
-  "68": "Ancient Apparition",
-  "69": "Doom",
-  "70": "Ursa",
-  "71": "Spirit Breaker",
-  "72": "Gyrocopter",
-  "73": "Alchemist",
-  "74": "Invoker",
-  "75": "Silencer",
-  "76": "Outworld Devourer",
-  "77": "Lycan",
-  "78": "Brewmaster",
-  "79": "Shadow Demon",
-  "80": "Lone Druid",
-  "81": "Chaos Knight",
-  "82": "Meepo",
-  "83": "Treant Protector",
-  "84": "Ogre Magi",
-  "85": "Undying",
-  "86": "Rubick",
-  "87": "Disruptor",
-  "88": "Nyx Assassin",
-  "89": "Naga Siren",
-  "90": "Keeper of the Light",
-  "91": "Io",
-  "92": "Visage",
-  "93": "Slark",
-  "94": "Medusa",
-  "95": "Troll Warlord",
-  "96": "Centaur Warrunner",
-  "97": "Magnus",
-  "98": "Timbersaw",
-  "99": "Bristleback",
-  "100": "Tusk",
-  "101": "Skywrath Mage",
-  "102": "Abaddon",
-  "103": "Elder Titan",
-  "104": "Legion Commander",
-  "105": "Techies",
-  "106": "Ember Spirit",
-  "107": "Earth Spirit",
-  "108": "Underlord",
-  "109": "Terrorblade",
-  "110": "Phoenix",
-  "111": "Oracle",
-  "112": "Winter Wyvern",
-  "113": "Arc Warden",
-  "114": "Monkey King",
-  "119": "Dark Willow",
-  "120": "Pangolier",
-  "121": "Grimstroke",
-  "129": "Mars"
+    "1": {
+        "dota_name": "antimage",
+        "name": "Anti-Mage"
+    },
+    "2": {
+        "dota_name": "axe",
+        "name": "Axe"
+    },
+    "3": {
+        "dota_name": "bane",
+        "name": "Bane"
+    },
+    "4": {
+        "dota_name": "bloodseeker",
+        "name": "Bloodseeker"
+    },
+    "5": {
+        "dota_name": "crystal_maiden",
+        "name": "Crystal Maiden"
+    },
+    "6": {
+        "dota_name": "drow_ranger",
+        "name": "Drow Ranger"
+    },
+    "7": {
+        "dota_name": "earthshaker",
+        "name": "Earthshaker"
+    },
+    "8": {
+        "dota_name": "juggernaut",
+        "name": "Juggernaut"
+    },
+    "9": {
+        "dota_name": "mirana",
+        "name": "Mirana"
+    },
+    "10": {
+        "dota_name": "morphling",
+        "name": "Morphling"
+    },
+    "11": {
+        "dota_name": "nevermore",
+        "name": "Shadow Fiend"
+    },
+    "12": {
+        "dota_name": "phantom_lancer",
+        "name": "Phantom Lancer"
+    },
+    "13": {
+        "dota_name": "puck",
+        "name": "Puck"
+    },
+    "14": {
+        "dota_name": "pudge",
+        "name": "Pudge"
+    },
+    "15": {
+        "dota_name": "razor",
+        "name": "Razor"
+    },
+    "16": {
+        "dota_name": "sand_king",
+        "name": "Sand King"
+    },
+    "17": {
+        "dota_name": "storm_spirit",
+        "name": "Storm Spirit"
+    },
+    "18": {
+        "dota_name": "sven",
+        "name": "Sven"
+    },
+    "19": {
+        "dota_name": "tiny",
+        "name": "Tiny"
+    },
+    "20": {
+        "dota_name": "vengefulspirit",
+        "name": "Vengeful Spirit"
+    },
+    "21": {
+        "dota_name": "windrunner",
+        "name": "Windranger"
+    },
+    "22": {
+        "dota_name": "zuus",
+        "name": "Zeus"
+    },
+    "23": {
+        "dota_name": "kunkka",
+        "name": "Kunkka"
+    },
+    "25": {
+        "dota_name": "lina",
+        "name": "Lina"
+    },
+    "26": {
+        "dota_name": "lion",
+        "name": "Lion"
+    },
+    "27": {
+        "dota_name": "shadow_shaman",
+        "name": "Shadow Shaman"
+    },
+    "28": {
+        "dota_name": "slardar",
+        "name": "Slardar"
+    },
+    "29": {
+        "dota_name": "tidehunter",
+        "name": "Tidehunter"
+    },
+    "30": {
+        "dota_name": "witch_doctor",
+        "name": "Witch Doctor"
+    },
+    "31": {
+        "dota_name": "lich",
+        "name": "Lich"
+    },
+    "32": {
+        "dota_name": "riki",
+        "name": "Riki"
+    },
+    "33": {
+        "dota_name": "enigma",
+        "name": "Enigma"
+    },
+    "34": {
+        "dota_name": "tinker",
+        "name": "Tinker"
+    },
+    "35": {
+        "dota_name": "sniper",
+        "name": "Sniper"
+    },
+    "36": {
+        "dota_name": "necrolyte",
+        "name": "Necrophos"
+    },
+    "37": {
+        "dota_name": "warlock",
+        "name": "Warlock"
+    },
+    "38": {
+        "dota_name": "beastmaster",
+        "name": "Beastmaster"
+    },
+    "39": {
+        "dota_name": "queenofpain",
+        "name": "Queen of Pain"
+    },
+    "40": {
+        "dota_name": "venomancer",
+        "name": "Venomancer"
+    },
+    "41": {
+        "dota_name": "faceless_void",
+        "name": "Faceless Void"
+    },
+    "42": {
+        "dota_name": "skeleton_king",
+        "name": "Wraith King"
+    },
+    "43": {
+        "dota_name": "death_prophet",
+        "name": "Death Prophet"
+    },
+    "44": {
+        "dota_name": "phantom_assassin",
+        "name": "Phantom Assassin"
+    },
+    "45": {
+        "dota_name": "pugna",
+        "name": "Pugna"
+    },
+    "46": {
+        "dota_name": "templar_assassin",
+        "name": "Templar Assassin"
+    },
+    "47": {
+        "dota_name": "viper",
+        "name": "Viper"
+    },
+    "48": {
+        "dota_name": "luna",
+        "name": "Luna"
+    },
+    "49": {
+        "dota_name": "dragon_knight",
+        "name": "Dragon Knight"
+    },
+    "50": {
+        "dota_name": "dazzle",
+        "name": "Dazzle"
+    },
+    "51": {
+        "dota_name": "rattletrap",
+        "name": "Clockwerk"
+    },
+    "52": {
+        "dota_name": "leshrac",
+        "name": "Leshrac"
+    },
+    "53": {
+        "dota_name": "furion",
+        "name": "Nature's Prophet"
+    },
+    "54": {
+        "dota_name": "life_stealer",
+        "name": "Lifestealer"
+    },
+    "55": {
+        "dota_name": "dark_seer",
+        "name": "Dark Seer"
+    },
+    "56": {
+        "dota_name": "clinkz",
+        "name": "Clinkz"
+    },
+    "57": {
+        "dota_name": "omniknight",
+        "name": "Omniknight"
+    },
+    "58": {
+        "dota_name": "enchantress",
+        "name": "Enchantress"
+    },
+    "59": {
+        "dota_name": "huskar",
+        "name": "Huskar"
+    },
+    "60": {
+        "dota_name": "night_stalker",
+        "name": "Night Stalker"
+    },
+    "61": {
+        "dota_name": "broodmother",
+        "name": "Broodmother"
+    },
+    "62": {
+        "dota_name": "bounty_hunter",
+        "name": "Bounty Hunter"
+    },
+    "63": {
+        "dota_name": "weaver",
+        "name": "Weaver"
+    },
+    "64": {
+        "dota_name": "jakiro",
+        "name": "Jakiro"
+    },
+    "65": {
+        "dota_name": "batrider",
+        "name": "Batrider"
+    },
+    "66": {
+        "dota_name": "chen",
+        "name": "Chen"
+    },
+    "67": {
+        "dota_name": "spectre",
+        "name": "Spectre"
+    },
+    "68": {
+        "dota_name": "ancient_apparition",
+        "name": "Ancient Apparition"
+    },
+    "69": {
+        "dota_name": "doom_bringer",
+        "name": "Doom"
+    },
+    "70": {
+        "dota_name": "ursa",
+        "name": "Ursa"
+    },
+    "71": {
+        "dota_name": "spirit_breaker",
+        "name": "Spirit Breaker"
+    },
+    "72": {
+        "dota_name": "gyrocopter",
+        "name": "Gyrocopter"
+    },
+    "73": {
+        "dota_name": "alchemist",
+        "name": "Alchemist"
+    },
+    "74": {
+        "dota_name": "invoker",
+        "name": "Invoker"
+    },
+    "75": {
+        "dota_name": "silencer",
+        "name": "Silencer"
+    },
+    "76": {
+        "dota_name": "obsidian_destroyer",
+        "name": "Outworld Devourer"
+    },
+    "77": {
+        "dota_name": "lycan",
+        "name": "Lycan"
+    },
+    "78": {
+        "dota_name": "brewmaster",
+        "name": "Brewmaster"
+    },
+    "79": {
+        "dota_name": "shadow_demon",
+        "name": "Shadow Demon"
+    },
+    "80": {
+        "dota_name": "lone_druid",
+        "name": "Lone Druid"
+    },
+    "81": {
+        "dota_name": "chaos_knight",
+        "name": "Chaos Knight"
+    },
+    "82": {
+        "dota_name": "meepo",
+        "name": "Meepo"
+    },
+    "83": {
+        "dota_name": "treant",
+        "name": "Treant Protector"
+    },
+    "84": {
+        "dota_name": "ogre_magi",
+        "name": "Ogre Magi"
+    },
+    "85": {
+        "dota_name": "undying",
+        "name": "Undying"
+    },
+    "86": {
+        "dota_name": "rubick",
+        "name": "Rubick"
+    },
+    "87": {
+        "dota_name": "disruptor",
+        "name": "Disruptor"
+    },
+    "88": {
+        "dota_name": "nyx_assassin",
+        "name": "Nyx Assassin"
+    },
+    "89": {
+        "dota_name": "naga_siren",
+        "name": "Naga Siren"
+    },
+    "90": {
+        "dota_name": "keeper_of_the_light",
+        "name": "Keeper of the Light"
+    },
+    "91": {
+        "dota_name": "wisp",
+        "name": "Io"
+    },
+    "92": {
+        "dota_name": "visage",
+        "name": "Visage"
+    },
+    "93": {
+        "dota_name": "slark",
+        "name": "Slark"
+    },
+    "94": {
+        "dota_name": "medusa",
+        "name": "Medusa"
+    },
+    "95": {
+        "dota_name": "troll_warlord",
+        "name": "Troll Warlord"
+    },
+    "96": {
+        "dota_name": "centaur",
+        "name": "Centaur Warrunner"
+    },
+    "97": {
+        "dota_name": "magnataur",
+        "name": "Magnus"
+    },
+    "98": {
+        "dota_name": "shredder",
+        "name": "Timbersaw"
+    },
+    "99": {
+        "dota_name": "bristleback",
+        "name": "Bristleback"
+    },
+    "100": {
+        "dota_name": "tusk",
+        "name": "Tusk"
+    },
+    "101": {
+        "dota_name": "skywrath_mage",
+        "name": "Skywrath Mage"
+    },
+    "102": {
+        "dota_name": "abaddon",
+        "name": "Abaddon"
+    },
+    "103": {
+        "dota_name": "elder_titan",
+        "name": "Elder Titan"
+    },
+    "104": {
+        "dota_name": "legion_commander",
+        "name": "Legion Commander"
+    },
+    "105": {
+        "dota_name": "techies",
+        "name": "Techies"
+    },
+    "106": {
+        "dota_name": "ember_spirit",
+        "name": "Ember Spirit"
+    },
+    "107": {
+        "dota_name": "earth_spirit",
+        "name": "Earth Spirit"
+    },
+    "108": {
+        "dota_name": "abyssal_underlord",
+        "name": "Underlord"
+    },
+    "109": {
+        "dota_name": "terrorblade",
+        "name": "Terrorblade"
+    },
+    "110": {
+        "dota_name": "phoenix",
+        "name": "Phoenix"
+    },
+    "111": {
+        "dota_name": "oracle",
+        "name": "Oracle"
+    },
+    "112": {
+        "dota_name": "winter_wyvern",
+        "name": "Winter Wyvern"
+    },
+    "113": {
+        "dota_name": "arc_warden",
+        "name": "Arc Warden"
+    },
+    "114": {
+        "dota_name": "monkey_king",
+        "name": "Monkey King"
+    },
+    "119": {
+        "dota_name": "dark_willow",
+        "name": "Dark Willow"
+    },
+    "120": {
+        "dota_name": "pangolier",
+        "name": "Pangolier"
+    },
+    "121": {
+        "dota_name": "grimstroke",
+        "name": "Grimstroke"
+    },
+    "126": {
+        "dota_name": "void_spirit",
+        "name": "Void Spirit"
+    },
+    "128": {
+        "dota_name": "snapfire",
+        "name": "Snapfire"
+    },
+    "129": {
+        "dota_name": "mars",
+        "name": "Mars"
+    }
 }
