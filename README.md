@@ -6,9 +6,17 @@ Installing
 ```shell
 git clone https://github.com/veyzz/d2track.git
 pip3 install -r requirements.txt
+python3 d2track.py update
 ```
 
-Example 
+Usage
+
 ```shell
 python3 d2track.py
+```
+
+When a new hero appears in the game, you need to do
+
+```shell
+python3 d2track.py update
 ```
