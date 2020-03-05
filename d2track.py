@@ -3,7 +3,6 @@ import asyncio
 import json
 import os
 import re
-import requests
 import time
 from apihelper import *
 from view import *
