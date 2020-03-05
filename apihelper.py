@@ -1,3 +1,5 @@
+import aiohttp
+import io
 import json
 import os
 import re
@@ -32,7 +34,7 @@ def get_players():
         re.findall('DOTA_GAMEMODE_CM|DOTA_GAMEMODE_ALL_DRAFT (.*)', string)[-1])))[:10:]
 
 
-def get_heroes(player_id, limit=0, min_games=3):
+async def get_heroes(player_id, session, limit=0, min_games=3):
     """ Gets the heroes the player has played the most.
     :param player_id: Player's ID (number).
     :param limit: Number of matches to limit to.
@@ -42,19 +44,18 @@ def get_heroes(player_id, limit=0, min_games=3):
     """
     url = f"https://api.opendota.com/api/players/{player_id}/heroes"
     payload = {"limit": limit, "having": min_games}
-    response = requests.get(url, params=payload)
-    if response.status_code != 200:
-        raise Exception("Connection fault", response.status_code,
-                        response.reason)
-    data = [{
+    async with session.get(url, params=payload) as response:
+        data = await response.json()
+    data = data[0:3]
+    data_w = [{
         key: value
         for key, value in obj.items()
         if key in ("hero_id", "last_played", "games", "win")
-    } for obj in response.json()[0:3]]
-    return data
+    } for obj in data]
+    return data_w
 
 
-def get_wl(player_id, limit=0):
+async def get_wl(player_id, session, limit=0):
     """ Gets amount of games played and winrate.
     :param player_id: Player's ID (number).
     :param limit: Number of matches to limit to.
@@ -63,11 +64,8 @@ def get_wl(player_id, limit=0):
     """
     url = f"https://api.opendota.com/api/players/{player_id}/wl"
     payload = {"limit": limit}
-    response = requests.get(url, params=payload)
-    if response.status_code != 200:
-        raise Exception("Connection fault", response.status_code,
-                        response.reason)
-    data = response.json()
+    async with session.get(url, params=payload) as response:
+        data = await response.json()
     amount = data['win'] + data['lose']
     if not amount:
         return (0, 0)
@@ -76,21 +74,48 @@ def get_wl(player_id, limit=0):
     return result
 
 
-def get_profile(player_id):
+async def get_profile(player_id, session):
     """ Gets user profile name and link.
     :param player_id: Player's ID (number).
     :return: Turple with name, link.
 
     """
     url = f"https://api.opendota.com/api/players/{player_id}"
-    response = requests.get(url)
-    if response.status_code != 200:
-        raise Exception("Connection fault", response.status_code,
-                        response.reason)
-    data = response.json()
+    async with session.get(url) as response:
+        data = await response.json()
     try:
         name = data["profile"]["personaname"]
+        if not name:
+            name = "Профиль"
     except KeyError:
         name = "Undefined"
     link = f"https://www.dotabuff.com/players/{player_id}"
     return name, link
+
+
+async def get_data(p_id, data, session):
+    name, link = await get_profile(p_id, session)
+    if name != "Undefined":
+        heroes = await get_heroes(p_id, session)
+        total_games, total_wr = await get_wl(p_id, session)
+        last_heroes = await get_heroes(p_id, session, 20)
+        _, last_wr = await get_wl(p_id, session, 20)
+        data[p_id] = {
+            "name": name,
+            "link": link,
+            "games": total_games,
+            "winrate": total_wr,
+            "heroes": heroes,
+            "last_heroes": last_heroes,
+            "last_winrate": last_wr
+        }
+    else:
+        data[p_id] = {
+            "name": name,
+            "link": link,
+            "games": 0,
+            "winrate": 0,
+            "heroes": [],
+            "last_heroes": [],
+            "last_winrate": 0
+        }

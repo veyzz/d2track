@@ -1,3 +1,5 @@
+import aiohttp
+import asyncio
 import json
 import os
 import re
@@ -7,46 +9,27 @@ from apihelper import *
 from view import *
 
 
-def main():
+async def main():
     with open('heroes.json', 'r') as file:
         HEROES = json.load(file)
     data = {}
-    for p_id in get_players():
-        name, link = get_profile(p_id)
-        if name != "Undefined":
-            heroes = get_heroes(p_id)
-            total_games, total_wr = get_wl(p_id)
-            last_heroes = get_heroes(p_id, 20)
-            _, last_wr = get_wl(p_id, 20)
-            data[p_id] = {
-                "name": name,
-                "link": link,
-                "games": total_games,
-                "winrate": total_wr,
-                "heroes": heroes,
-                "last_heroes": last_heroes,
-                "last_winrate": last_wr
-            }
-        else:
-            data[p_id] = {
-                "name": name,
-                "link": link,
-                "games": 0,
-                "winrate": 0,
-                "heroes": [],
-                "last_heroes": [],
-                "last_winrate": 0
-            }
-    #to_console(data, HEROES)
-    to_html(data, HEROES)
+    tasks = []
+    players = get_players()
+    async with aiohttp.ClientSession() as session:
+        for p_id in players:
+            task = asyncio.create_task(get_data(p_id, data, session))
+            tasks.append(task)
+        await asyncio.gather(*tasks)
+    #to_console(players, new, HEROES)
+    to_html(players, data, HEROES)
     os.system('google-chrome --new-window -app d2track.html')
 
 
 def test():
     t = time.time()
-    main()
+    asyncio.run(main())
     print("TOTAL TIME:", time.time() - t)
 
 
 if __name__ == "__main__":
-    test()
+    asyncio.run(main())
