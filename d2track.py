@@ -3,6 +3,8 @@ import asyncio
 import json
 import os
 import re
+import requests
+import sys
 import time
 from apihelper import *
 from view import *
@@ -31,4 +33,9 @@ def test():
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    if len(sys.argv) == 1:
+        asyncio.run(main())
+    elif len(sys.argv) == 2 and sys.argv[1] == 'update':
+        get_heroes_list()
+    else:
+        print(f"Usage: python3 {sys.argv[0]} {{update}}")
