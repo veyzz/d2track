@@ -3,6 +3,7 @@ import io
 import json
 import os
 import re
+import requests
 
 
 def get_heroes_list():
