@@ -4,9 +4,9 @@ There are 2 functions to represent data
 """
 
 
-def to_console(data, HEROES):
+def to_console(players, data, HEROES):
     k = 0
-    for p_id in data.keys():
+    for p_id in players:
         k += 1
         obj = data[p_id]
         print(f"[{k}]: {obj['name']}\n{obj['link']}")
@@ -26,7 +26,7 @@ def to_console(data, HEROES):
         print('-----')
 
 
-def to_html(data, HEROES):
+def to_html(players, data, HEROES):
     html_page = '''
 <!DOCTYPE HTML>
 <html>
@@ -93,7 +93,7 @@ def to_html(data, HEROES):
   <div id="window">
     <div id="half">'''
     k = 0
-    for p_id in data.keys():
+    for p_id in players:
         k += 1
         if k == 6:
             html_page += '''
@@ -111,7 +111,7 @@ def to_html(data, HEROES):
         <div id="link">
           <br>
           <a href="{obj['link']}" target="_blank">
-            Профиль
+            {obj['name']}
           </a>
           <br>
           Игр: {obj['games']}
