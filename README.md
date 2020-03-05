@@ -1,6 +1,5 @@
 # d2track
-For linux only
-Python 3.6 or higher must be installed
+For linux only. Python 3.6 or higher must be installed.
 
 Installing
 
